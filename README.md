@@ -7,7 +7,7 @@
 
 To get up and running, make sure you have [Python 3.4](https://www.python.org/) installed, preferable in a virtual environment.
 
-This project work's through the API of weather24. 
+This project work's through the API of [Weather24 Cape Town](http://weather.news24.com/sa/capetown). 
 
 ### Prerequisites
 
@@ -88,18 +88,18 @@ python manage.py runserver
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 
 ## Authors
 
 * **Imran Paruk** - *Initial work* 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](/contributors.md) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](/LICENSE.md) file for details
 
 ## Acknowledgments
 
