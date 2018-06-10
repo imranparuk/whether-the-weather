@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<div class="navbar-header">
+  <a class="navbar-brand" href="#">Hi {{ user.username }}!</a>
+</div>
+<ul class="nav navbar-nav">
+  <li><a href="{% url 'logout' %}">Logout</a></li>
+</ul>
+</nav>
+
+
+
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+{% if forecast_list %}
+        {% for forecast in forecast_list %}
+    <p></p>
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-calendar" aria-hidden="true">
+              {{ forecast.date }}
+            </i>
+          </div>
+          <ul class="list-group list-group-flush">
+             <li class="list-group-item">
+              <i class="wi wi-thermometer-exterior">   {{ forecast.min_temp }} °C</i>
+              - Minimum Temperature
+             </li>
+             <li class="list-group-item">
+              <i class="wi wi-thermometer">  {{ forecast.max_temp  }} °C</i>
+              - Maximum Temperature
+             </li>
+             <li class="list-group-item">
+              <i class="wi wi-strong-wind">  {{ forecast.wind_speed }} km/h</i>
+              - Wind Speed
+             </li>
+             <li class="list-group-item"> 
+              <i class="wi wi-storm-showers"> {{ forecast.rain_probability }}</i>
+              - Rain Probability
+             </li>
+
+          </ul>
+        </div>
+    <p></p>
+        {% endfor %}
+
+    {# .... **Now the pagination section** .... #}
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="/?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                   <li class="page-item"><a class="page-link" href="#">
+                       Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </a></li>
+       
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="/?page={{ page_obj.next_page_number }}">Next</a></li>
+                {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+{% else %}
+    <h3>My Cars</h3>
+    <p>No cars found!!! :(</p>
+{% endif %}
+  </div>
+</div>
+
+
+{% else %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+
+        <div class="card">
+          <div class="card-header">
+              <h4>You are not logged in</h4>
+          </div>
+          <p></p>
+          <a href="{% url 'login' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Log In</a>
+          <p></p>
+          <a href="{% url 'signup' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Register</a>
+
+       </div>
+    </div>
+  </div>    
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+<div class="card">
+<header class="card-header">
+	<a href="{% url 'login' %}" class="float-right btn btn-outline-primary mt-1">Log in</a>
+	<h4 class="card-title mt-2">Registration</h4>
+</header>
+<article class="card-body">
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+
+</article> 
+<div class="border-top card-body text-center">Have an account? <a href="{% url 'login' %}">Log In</a></div>
+</div>
+</div>
+</div>
+
+{% endblock %}
+
