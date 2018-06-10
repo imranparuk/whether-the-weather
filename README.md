@@ -32,6 +32,17 @@ INSTALLED_APPS = (
     'rest_framework',
 )
 ```
+#### PIP
+
+To install the required packages it should be as easy as...
+```
+$ pip install -r requirements.txt 
+```
+but you may want to look at some extra arguements if that doesn't work
+```
+--no-index --find-links
+```
+aaand if that doesn't work you may want to check out the [doc](https://pip.pypa.io/en/stable/user_guide/)
 #### The Cron-Job
 (Linux Only!)
 As mentioned before the project relies on its data from weather24. We access this through their API using the python requests library. 
@@ -42,6 +53,8 @@ To list all the current scheduled tasks
 ```
 $ sudo crontab -l
 ```
+###### and Windows?
+There is ```schtasks```, this [post](https://stackoverflow.com/a/7195722) will guide you... but in general, use [Linux](https://www.ubuntu.com/)
 
 To create a new task
 
